@@ -8,6 +8,12 @@ var urlsToCache = [
   './',
   './index.html',
   './manifest.json',
+  './src/assets/icons/icon-48.png',
+  './src/assets/icons/icon-96.png',
+  './src/assets/icons/icon-144.png',
+  './src/assets/icons/icon-152.png',
+  './src/assets/icons/icon-196.png',
+  './src/assets/icons/icon-384.png',
   './serviceworker-cache-polyfill.js',
   './dist/build.js',
 ];
