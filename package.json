@@ -10,7 +10,11 @@
     "start": "npm install && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.1.0"
+    "firebase": "^3.6.4",
+    "request": "^2.79.0",
+    "vue": "^2.1.0",
+    "vuex": "^2.1.1",
+    "web-push": "^3.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

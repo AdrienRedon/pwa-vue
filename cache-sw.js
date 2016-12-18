@@ -1,4 +1,3 @@
-
 importScripts('serviceworker-cache-polyfill.js');
 
 var CACHE_NAME = 'simple-pwa-v2';
@@ -20,7 +19,7 @@ var urlsToCache = [
 
 
 // Set the callback for the install step
-self.oninstall = function (e) {
+self.addEventListener('oninstall', function (e) {
   console.log('[serviceWorker]: Installing...');
   // perform install steps
   e.waitUntil(
@@ -34,10 +33,10 @@ self.oninstall = function (e) {
         return self.skipWaiting();
       })
   );
-};
+});
 
 
-self.onfetch = function (e) {
+self.addEventListener('onfetch', function (e) {
 
   console.log('[serviceWorker]: Fetching ' + e.request.url);
   var raceUrl = 'API/';
@@ -87,10 +86,10 @@ self.onfetch = function (e) {
     );
   }
 
-};
+});
 
 
-self.onactivate = function (e) {
+self.addEventListener('onactivate', function (e) {
 
   console.log('[serviceWorker]: Actived');
 
@@ -104,11 +103,10 @@ self.onactivate = function (e) {
             return caches.delete(cacheName);
           }
         })
-      )
+      );
     }).then(function () {
       console.log('[serviceWorker]: Clients Claims');
       return self.clients.claim();
     })
   );
-
-};
+});

@@ -1,7 +1,9 @@
-import Vue from 'vue'
-import App from './components/App.vue'
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
 
 new Vue({
   el: '#app',
-  render: h => h(App)
-})
+  render: h => h(require('./App.vue'))
+});
