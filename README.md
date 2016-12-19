@@ -1,6 +1,8 @@
-# amp-pwa-vue
+# pwa-vue
 
 > A Vue.js project
+
+Progressive web app with firebase cloud messaging and offline support through service workers.
 
 ## Build Setup
 
