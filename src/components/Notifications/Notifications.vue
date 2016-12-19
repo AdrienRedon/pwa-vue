@@ -1,17 +1,28 @@
 <template>
-    
+    <div>
+        <p>id : {{ id }}</p>
+        <notification v-for="notification in this.state.notifications">
+            <template slot="title">{{ notification.payload.title }}</template>
+            {{ notification.payload.body }}
+        </notification>
+    </div>
 </template>
 
 <script>
 import firebase from 'firebase';
 import Vuex from 'vuex';
 import store from './NotificationsStore';
+import Notification from './Notification.vue';
 
 export default {
+    components: { Notification },
     store,
 
     data () {
-        return {}
+        return {
+            state: store.state,
+            id: ''
+        }
     },
 
     computed: {
@@ -33,20 +44,13 @@ export default {
 
 
         messaging.requestPermission()
-        .then(function() {
-            console.log('Have permission');
-            return messaging.getToken();
-        })
-        .then(function(token) {
-            console.log(token); // token to send to the server
-        })
-        .catch(function(err) {
-            console.log('Error occured', err);
-        });
+        .then(() => messaging.getToken())
+        .then((token) => this.id = token) // token to send to the server
+        .catch(err => console.log('Error occured', err));
 
-        messaging.onMessage(function(payload) {
-            console.log('onMessage :', payload);
-            store.commit('ADD_NOTIFICATION', payload);
+        messaging.onMessage(function(data) {
+            console.log('onMessage :', data);
+            store.commit('ADD_NOTIFICATION', data.notification);
         });
     }
 }

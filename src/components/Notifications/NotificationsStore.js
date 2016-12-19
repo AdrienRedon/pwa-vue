@@ -13,12 +13,12 @@ const mutations = {
 };
 
 const getters = {
-    todos:  state => state.notifications
+    notifications:  state => state.notifications
 };
 
 export default new Vuex.Store({
     state: state,
     mutations: mutations,
-    getters: {},
+    getters: getters,
     actions: {},
 });
